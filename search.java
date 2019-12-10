@@ -12,12 +12,12 @@ for(int i=0;i<rows;i++)
 a[i] = sc.nextInt();
 }
 System.out.println("enter key ");
-key = sc.nextInt();
+int key = sc.nextInt();
 
 for(int i=0;i<rows;i++) 
 {
 if(a[i]==key){
-System.out.println("found at "+i+1);
+System.out.println("found at "+(i+1));
 System.exit(0);
 }
 
