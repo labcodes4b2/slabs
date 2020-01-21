@@ -1,8 +1,35 @@
-import java.util.*;
-class stack2
-{
-	public static void main(String[] arg)
-	{
+import java.util.*; 
+
+class stack2 
+{ 
+	static boolean validateStackSequence(int pushed[], 
+										int popped[], int len) 
+	{ 
+
+		
+		int j = 0; 
+
+		
+		Stack<Integer> st = new Stack<>(); 
+		for (int i = 0; i < len; i++) 
+		{ 
+			st.push(pushed[i]); 
+
+			while (!st.empty() && j < len && 
+					st.peek() == popped[j]) 
+			{ 
+				st.pop(); 
+				j++; 
+			} 
+		} 
+
+		return j == len; 
+	} 
+
+	public static void main(String[] args) 
+	{ 
+
+
 		Scanner snehil=new Scanner(System.in);
 		int a[],b[],size=snehil.nextInt();
 		a= new int[size];
@@ -31,5 +58,7 @@ class stack2
 		{
 			System.out.println("incorrect sequence");
 		}
-	}
-}
+
+
+	} 
+} 
