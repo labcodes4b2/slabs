@@ -1,0 +1,121 @@
+irstly we create a class named Node. Every node consists of an address of the next element and its value. But the last node has null stored at its address as it is the last element.
+
+This is how one node is connected to the other node. So we create a node class and it consists of two declarations. one is integer type data and the other is Node type next variable.
+
+LinkedList in Java using node class
+
+Creating Node.java file
+
+public class Node 
+{
+  int data;
+  Node next;
+}
+The above code creates a block of memory. Where a part of it stores the address of next data and other part stores data.
+
+Creating Linkedlist.java file
+
+public class Linkedlist
+{
+  Node head;
+  
+  public void insert(int data)
+  {
+    Node node=new Node();
+    node.data=data;
+    node.next=null;
+    
+    if(head==null)
+    {
+      head=node;
+    }
+    else
+    {
+      Node n=head;
+      while(n.next!=null)
+      {
+        n=n.next;
+      }
+      n.next=node;
+    }
+  }
+  public void delete(int index)
+  {
+    if(index==0)
+    {
+      head=head.next;
+    }
+    else
+    {
+      Node n=head;
+      Node n1=null;
+      for(int i=0;i<index-1;i++)
+      {
+        n=n.next;
+      }
+      n1=n.next;
+      n.next=n1.next;
+      System.out.println("n1" + n1.data);
+    }
+  }
+  public void show()
+  {
+    Node node=head;
+    
+    while(node.next!=null)
+    {
+      System.out.println(node.data);
+      node=node.next;
+    }
+    System.out.println(node.data);
+  }
+  public void insertAtStart(int data)
+  {
+    Node node=new Node();
+    node.data=data;
+    node.next=head;
+    head=node;
+  }
+  public void insertAt(int index,int data)
+  {
+    Node node=new Node();
+    node.data=data;
+    node.next=head;
+    
+    Node n=head;
+    for(int i=0;i<index-1;i++)
+    {
+      n=n.next;
+    }
+    node.next=n.next;
+    n.next=node;
+  }
+}
+For inserting the node at the end we simply copy the address of the node to be added to the last node. And we make the newly added node as null. We can also add an element at the start. We replace the head node with a new node. And we put the address of the next node in our head node.
+
+We can also add an element at the index of your choice with insertAt function. For deleting a node we can also write n.next=n.next.next. It automatically deletes an adjacent node. n.next represent the address of node and n.data gives us data stored in it.
+
+Show function print data of the node until we encounter null value. Insert functions work is to add a node. It reaches to the position where we want to add the node by .next and adds.
+
+Creating Runner.java file
+
+//import java.util.LinkedList;
+public class Runner {
+  public static void main(String[] args) 
+  {
+  Linkedlist list=new Linkedlist();
+  list.insert(18);
+  list.insert(7);
+  list.insert(15);
+  list.insertAtStart(25);
+  list.insertAt(2,55);
+  list.delete(2);
+  
+  list.show();
+  }
+}
+Output:
+18
+7
+55
+15
